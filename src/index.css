@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #3f413f;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.88), transparent 34%),
+    linear-gradient(180deg, #fbf6ef 0%, #f6efe5 42%, #f7f4f0 100%);
+  font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.8), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(155, 182, 201, 0.2), transparent 26%),
+    radial-gradient(circle at 70% 55%, rgba(231, 201, 196, 0.2), transparent 20%),
+    linear-gradient(180deg, #fbf7f2 0%, #f5ede4 46%, #f9f6f1 100%);
+  color: #3f413f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(155, 182, 201, 0.35);
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 pb-28 pt-5 text-ink sm:px-6 lg:px-8;
+  }
+
+  .section-shell {
+    @apply relative scroll-mt-24 rounded-[2rem] border border-white/60 bg-white/70 p-4 shadow-board backdrop-blur-sm sm:p-6;
+  }
+
+  .section-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    pointer-events: none;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.42), transparent 35%),
+      radial-gradient(circle at top right, rgba(155, 182, 201, 0.12), transparent 28%);
+  }
+
+  .editorial-card {
+    @apply relative overflow-hidden rounded-[1.7rem] border border-white/70 bg-shell shadow-soft transition duration-300 ease-out;
+  }
+
+  .editorial-card::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+  }
+
+  .card-inner {
+    @apply relative z-10 p-4 sm:p-5;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center rounded-full border border-white/70 bg-white/75 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-driftwood shadow-sm;
+  }
+
+  .eyebrow {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-driftwood/90;
+  }
+
+  .masonry-board {
+    column-gap: 1rem;
+  }
+
+  .masonry-item {
+    @apply mb-4 break-inside-avoid;
+  }
+
+  .visual-panel {
+    @apply relative overflow-hidden rounded-[1.5rem] border border-white/60 p-4 shadow-soft;
+    min-height: 8rem;
+  }
+
+  .visual-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.5px),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 44%),
+      radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.4), transparent 26%);
+    background-size: 12px 12px, auto, auto;
+    pointer-events: none;
+  }
+
+  .bottom-safe {
+    padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+  }
+}
