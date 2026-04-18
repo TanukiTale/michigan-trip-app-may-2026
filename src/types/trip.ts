@@ -7,6 +7,12 @@ export type NavSection =
   | 'route'
   | 'notes';
 
+export interface ExternalLink {
+  label: string;
+  url: string;
+  note?: string;
+}
+
 export interface TripFeature {
   id: string;
   title: string;
@@ -68,6 +74,7 @@ export interface ActivityCard {
   practical: string;
   tags: string[];
   palette: string;
+  links?: ExternalLink[];
 }
 
 export interface FoodCategory {
@@ -98,6 +105,7 @@ export interface RouteStop {
   detail: string;
   tag: string;
   palette: string;
+  links?: ExternalLink[];
 }
 
 export interface TripData {

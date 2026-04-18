@@ -15,7 +15,7 @@ export const tripData: TripData = {
       subtitle: 'Main character energy for the trip',
       tag: 'camp base',
       note: 'Keep arrival soft: carry in the essentials, breathe, then take an easy shoreline walk before dinner.',
-      palette: 'from-[#d7c7b3] via-[#f4ece2] to-[#b7cad4]',
+      palette: 'from-[#b7e6f7] via-[#f4fcff] to-[#86cfe9]',
     },
     {
       id: 'birthday-day',
@@ -23,7 +23,7 @@ export const tripData: TripData = {
       subtitle: 'Lighthouse miles + sunset picnic',
       tag: 'May 25',
       note: 'The day is special because it stays realistic: hike in the morning, beach pause midday, picnic at golden hour.',
-      palette: 'from-[#f2d7d1] via-[#fff3ea] to-[#e9dbc8]',
+      palette: 'from-[#cceafb] via-[#f8fdff] to-[#9fdcf1]',
     },
     {
       id: 'sup-day',
@@ -31,7 +31,7 @@ export const tripData: TripData = {
       subtitle: 'Hamlin Lake glide and a shorter trail after',
       tag: 'must-do',
       note: 'Anchor one memorable activity and keep the rest of the day easy enough to actually enjoy.',
-      palette: 'from-[#a5c1d2] via-[#edf7fb] to-[#dce8de]',
+      palette: 'from-[#8fd8f1] via-[#eefcff] to-[#b8ece7]',
     },
     {
       id: 'travel-south',
@@ -39,7 +39,7 @@ export const tripData: TripData = {
       subtitle: 'Scenic transition with a little whimsy',
       tag: 'move day',
       note: 'Pack out, pause at Peter Pan, add one playful dune ride, then let Grand Haven feel like exhale mode.',
-      palette: 'from-[#d7d1c4] via-[#f8f4ef] to-[#c8d4df]',
+      palette: 'from-[#bee5f4] via-[#f7fdff] to-[#9cd3ed]',
     },
     {
       id: 'grand-haven',
@@ -47,7 +47,7 @@ export const tripData: TripData = {
       subtitle: 'Pier walks, coffee, no hard agenda',
       tag: 'low-key',
       note: 'This half of the trip should feel lighter than camping: more strolling, less logistics, room for drifting.',
-      palette: 'from-[#dfe9ef] via-[#fbfaf7] to-[#eee0d0]',
+      palette: 'from-[#d8f1fb] via-[#fbfeff] to-[#b7e1f3]',
     },
   ],
   mustDos: [
@@ -94,7 +94,7 @@ export const tripData: TripData = {
       mood: 'soft landing',
       vibe: 'camp cozy',
       tags: ['arrival', 'light day', 'camp setup'],
-      palette: 'from-[#d4c1aa] via-[#f8f0e4] to-[#b6c9d3]',
+      palette: 'from-[#bde6f7] via-[#f7fcff] to-[#8bcfe8]',
       segments: [
         {
           label: 'Morning',
@@ -130,7 +130,7 @@ export const tripData: TripData = {
       mood: 'birthday glow',
       vibe: 'romantic lake day',
       tags: ['birthday', 'sunset', 'must-do'],
-      palette: 'from-[#efd0cc] via-[#fff7f1] to-[#eedcc9]',
+      palette: 'from-[#cdeafb] via-[#fcfeff] to-[#a9def3]',
       segments: [
         {
           label: 'Morning',
@@ -166,7 +166,7 @@ export const tripData: TripData = {
       mood: 'lake blue reset',
       vibe: 'active but easy',
       tags: ['water day', 'balanced', 'must-do'],
-      palette: 'from-[#aac6d8] via-[#f5fbfd] to-[#dde8dc]',
+      palette: 'from-[#8fd8f1] via-[#f2fcff] to-[#b9ece6]',
       segments: [
         {
           label: 'Morning',
@@ -202,7 +202,7 @@ export const tripData: TripData = {
       mood: 'scenic transition',
       vibe: 'move day',
       tags: ['pack out', 'road day', 'adventure pause'],
-      palette: 'from-[#d9d1c4] via-[#f9f5ef] to-[#c4d3df]',
+      palette: 'from-[#bfe5f3] via-[#f8fdff] to-[#9ed4ed]',
       segments: [
         {
           label: 'Morning',
@@ -238,7 +238,7 @@ export const tripData: TripData = {
       mood: 'easy coastal drift',
       vibe: 'town and beach',
       tags: ['low-key', 'pier walk', 'downtown'],
-      palette: 'from-[#dce8ef] via-[#fbfbf8] to-[#efe1d0]',
+      palette: 'from-[#d6f1fb] via-[#fbfeff] to-[#b8e0f2]',
       segments: [
         {
           label: 'Morning',
@@ -274,7 +274,7 @@ export const tripData: TripData = {
       mood: 'last-day ease',
       vibe: 'gentle finish',
       tags: ['coffee', 'shops', 'final day'],
-      palette: 'from-[#edf1f3] via-[#ffffff] to-[#e9dccf]',
+      palette: 'from-[#e2f5fd] via-[#ffffff] to-[#c3e4f3]',
       segments: [
         {
           label: 'Morning',
@@ -304,7 +304,7 @@ export const tripData: TripData = {
       why: 'It gives the trip one defining hike without needing a packed day around it.',
       note: 'Bring water, a layer, and let the pace stay pleasant rather than performance-based.',
       tags: ['must-do', 'birthday', 'landmark'],
-      palette: 'from-[#d8c2b3] via-[#fef6ee] to-[#cad9e4]',
+      palette: 'from-[#bee7f8] via-[#f8fdff] to-[#97d2ec]',
     },
     {
       id: 'sable-river',
@@ -315,7 +315,7 @@ export const tripData: TripData = {
       why: 'Adds a wooded contrast to the beach and lake sections of the trip.',
       note: 'Use this only if energy is still good after paddling.',
       tags: ['flex', 'forest', 'balanced'],
-      palette: 'from-[#c9d5c8] via-[#f8fbf6] to-[#d8e4e0]',
+      palette: 'from-[#c8eef5] via-[#f8feff] to-[#b5e8e2]',
     },
     {
       id: 'jack-pine-shore',
@@ -326,7 +326,7 @@ export const tripData: TripData = {
       why: 'It turns camp setup days into actual vacation days.',
       note: 'Best used as a low-pressure reset, not as another item to complete.',
       tags: ['easy hike', 'sunset', 'camp'],
-      palette: 'from-[#dfcbb8] via-[#fff9f2] to-[#bed1db]',
+      palette: 'from-[#ccecf8] via-[#fbfeff] to-[#9fd9ef]',
     },
     {
       id: 'logging-trail',
@@ -337,7 +337,7 @@ export const tripData: TripData = {
       why: 'Useful as a weather-flex trail that still feels worth doing.',
       note: 'Keep this optional. The trip does not need every trail.',
       tags: ['backup', 'weather-flex', 'low-key'],
-      palette: 'from-[#d8dacb] via-[#fcfcf7] to-[#d9e1d6]',
+      palette: 'from-[#d8f1f4] via-[#fcfffe] to-[#c4e8e6]',
     },
   ],
   activities: [
@@ -348,7 +348,14 @@ export const tripData: TripData = {
       timing: 'Best on May 26 with a slow morning setup',
       practical: 'Pack dry layers, secure snacks, and protect the rest of the day from getting too full.',
       tags: ['must-do', 'water', 'balanced day'],
-      palette: 'from-[#a8c5d8] via-[#eef8fb] to-[#dde7df]',
+      palette: 'from-[#8fd8f1] via-[#eefcff] to-[#b8ece7]',
+      links: [
+        {
+          label: 'Ludington park info',
+          url: 'https://www.michigan.gov/recsearch/parks/ludington',
+          note: 'Official park page with Hamlin Lake paddlesport rental and Dune Grass firewood details.',
+        },
+      ],
     },
     {
       id: 'activity-picnic',
@@ -357,7 +364,7 @@ export const tripData: TripData = {
       timing: 'Golden hour on May 25',
       practical: 'Use battery candles, layered blankets, finger food, and one dedicated GF dessert so dinner stays easy.',
       tags: ['birthday', 'sunset', 'romantic'],
-      palette: 'from-[#efd0cb] via-[#fff6f1] to-[#eddfcf]',
+      palette: 'from-[#cdeafb] via-[#fbfeff] to-[#aedff3]',
     },
     {
       id: 'activity-dunes',
@@ -366,7 +373,7 @@ export const tripData: TripData = {
       timing: 'Midday on May 27',
       practical: 'Treat it as the one bigger stop before Grand Haven, not the start of more detours.',
       tags: ['move day', 'fun stop', 'scenic'],
-      palette: 'from-[#e4d2bc] via-[#faf4ea] to-[#c7d7e2]',
+      palette: 'from-[#c1e7f4] via-[#f9fdff] to-[#98d2ec]',
     },
     {
       id: 'activity-grand-haven',
@@ -375,7 +382,7 @@ export const tripData: TripData = {
       timing: 'May 28 or May 29 depending on weather',
       practical: 'Bring layers for wind and resist over-planning this section of the trip.',
       tags: ['low-key', 'walkable', 'easy'],
-      palette: 'from-[#d7e4ec] via-[#fcfcf8] to-[#eee2d5]',
+      palette: 'from-[#d6f0fb] via-[#fcfeff] to-[#bbe2f1]',
     },
   ],
   food: [
@@ -503,15 +510,35 @@ export const tripData: TripData = {
       note: 'Basecamp for the main chapter',
       detail: 'Beach-camping, lighthouse miles, and the birthday picnic all live here.',
       tag: 'May 24–27',
-      palette: 'from-[#d8c2ad] via-[#f8f0e5] to-[#b6cad4]',
+      palette: 'from-[#bbe5f6] via-[#f7fcff] to-[#8dcee8]',
+      links: [
+        {
+          label: 'Park info + rentals',
+          url: 'https://www.michigan.gov/recsearch/parks/ludington',
+          note: 'Official park page. It lists Dune Grass Concessions for SUP rentals and notes firewood availability/delivery for Jack Pine.',
+        },
+        {
+          label: 'Ludington hiking trail map',
+          url: 'https://www.michigan.gov/recsearch/-/media/Project/Websites/recsearch/documents/MapsI-N/ludington_hiking.pdf?hash=2C8F30752F200157BE5ACF1E2AC847A8&rev=1baf45f1ebb6437c8eed25b67234febb',
+          note: 'Official Michigan DNR PDF map for the hiking trails, including Big Sable Point, Sable River Trail and Jack Pine.',
+        },
+      ],
     },
     {
       id: 'route-peter-pan',
       title: 'Peter Pan stop',
       note: 'A whimsical roadside pause',
-      detail: 'Use it as a short scenic break rather than another large agenda item.',
+      detail:
+        'Use it as a short scenic break rather than another large agenda item. Look for the pull-off on South Lakeshore Drive between W Bradshaw and W Chauvez, then follow the short wooded path toward the bluff view.',
       tag: 'May 27',
-      palette: 'from-[#ead7c3] via-[#fff7ee] to-[#d9d8d0]',
+      palette: 'from-[#d4effb] via-[#fbfeff] to-[#b7e2f3]',
+      links: [
+        {
+          label: 'Open directions',
+          url: 'https://www.google.com/maps/place/Peter+Pan+Land/@43.912284,-86.4456781,17z',
+          note: 'Best used like a pin drop. This is the hidden bluff stop commonly called Peter Pan Land.',
+        },
+      ],
     },
     {
       id: 'route-silver-lake',
@@ -519,7 +546,14 @@ export const tripData: TripData = {
       note: 'The playful move-day highlight',
       detail: 'One bigger activity before shifting into Grand Haven mode.',
       tag: 'May 27',
-      palette: 'from-[#dcc7ad] via-[#f7f0e3] to-[#bfd0dc]',
+      palette: 'from-[#c1e7f4] via-[#f9fdff] to-[#98d3ec]',
+      links: [
+        {
+          label: "Mac Wood's Dune Rides",
+          url: 'https://macwoodsdunerides.com/',
+          note: 'Classic guided option in Mears. Their site lists current season dates, hours and location.',
+        },
+      ],
     },
     {
       id: 'route-grand-haven',
@@ -527,7 +561,14 @@ export const tripData: TripData = {
       note: 'The easy ending',
       detail: 'Pier walking, coffee, downtown drifting, and a much lighter rhythm.',
       tag: 'May 27–29',
-      palette: 'from-[#dbe7ed] via-[#fefcf8] to-[#ebddcf]',
+      palette: 'from-[#dff4fc] via-[#ffffff] to-[#bfe2f2]',
+      links: [
+        {
+          label: 'Bluewater Inn',
+          url: 'https://www.bluewaterinngrandhaven.com/',
+          note: 'Bluewater Inn official site for address, room details and booking reference.',
+        },
+      ],
     },
   ],
 };

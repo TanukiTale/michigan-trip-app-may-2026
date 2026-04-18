@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import {
+  ArrowUpRight,
   Backpack,
   CalendarDays,
   CheckCircle2,
   Coffee,
   Compass,
-  Heart,
   House,
+  Moon,
   NotebookPen,
   Route,
   Sparkles,
+  Sun,
   Trees,
   UtensilsCrossed,
   Waves,
@@ -19,6 +21,7 @@ import { BottomNav } from './components/BottomNav';
 import { SectionHeader } from './components/SectionHeader';
 import { TripDayCard } from './components/TripDayCard';
 import { tripData } from './data/trip';
+import { useLocalStorageState } from './hooks/useLocalStorageState';
 import type { NavSection } from './types/trip';
 
 const sections = [
@@ -95,20 +98,37 @@ function toggleId(id: string, setter: Dispatch<SetStateAction<string[]>>) {
   setter((current) => (current.includes(id) ? current.filter((item) => item !== id) : [...current, id]));
 }
 
+const ludingtonHeroImage =
+  'https://commons.wikimedia.org/wiki/Special:FilePath/Big%20Sable%20Point%20Lighthouse%20%28August%202023%29.jpg';
+
 function App() {
   const todayPlan = getTodayPlan();
+  const [theme, setTheme] = useLocalStorageState<'light' | 'dark'>('michigan-trip-theme', () => {
+    if (typeof window === 'undefined') {
+      return 'light';
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
   const [activeSection, setActiveSection] = useState<NavSection>('home');
-  const [expandedDays, setExpandedDays] = useState<Record<string, boolean>>({
+  const [expandedDays, setExpandedDays] = useLocalStorageState<Record<string, boolean>>('michigan-trip-expanded-days', {
     '2026-05-24': true,
     '2026-05-25': true,
   });
-  const [completedIds, setCompletedIds] = useState<string[]>([]);
-  const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
-  const [packingCheckedIds, setPackingCheckedIds] = useState<string[]>([]);
-  const [activePackingCategoryId, setActivePackingCategoryId] = useState(tripData.packing[0].id);
-  const [activeNoteDayId, setActiveNoteDayId] = useState(tripData.days[0].id);
-  const [noteDrafts, setNoteDrafts] = useState<Record<string, string>>({});
-  const [dayNotes, setDayNotes] = useState<Record<string, string[]>>({});
+  const [completedIds, setCompletedIds] = useLocalStorageState<string[]>('michigan-trip-completed', []);
+  const [packingCheckedIds, setPackingCheckedIds] = useLocalStorageState<string[]>('michigan-trip-packing', []);
+  const [activePackingCategoryId, setActivePackingCategoryId] = useLocalStorageState(
+    'michigan-trip-packing-category',
+    tripData.packing[0].id,
+  );
+  const [activeNoteDayId, setActiveNoteDayId] = useLocalStorageState('michigan-trip-note-day', tripData.days[0].id);
+  const [noteDrafts, setNoteDrafts] = useLocalStorageState<Record<string, string>>('michigan-trip-note-drafts', {});
+  const [dayNotes, setDayNotes] = useLocalStorageState<Record<string, string[]>>('michigan-trip-notes', {});
+
+  useEffect(() => {
+    document.body.classList.toggle('theme-dark', theme === 'dark');
+    document.body.classList.toggle('theme-light', theme === 'light');
+  }, [theme]);
 
   useEffect(() => {
     const observedSections = document.querySelectorAll<HTMLElement>('[data-section]');
@@ -166,14 +186,24 @@ function App() {
     <div className="app-shell bottom-safe">
       <div className="mb-4 flex items-center justify-between px-1">
         <div>
-          <p className="eyebrow">Curated trip board</p>
+          <p className="eyebrow">West Michigan birthday getaway</p>
           <h1 className="font-display text-[2rem] leading-none tracking-[-0.05em] text-ink sm:text-[2.5rem]">
             Eric & Mona
           </h1>
         </div>
-        <div className="rounded-full border border-white/70 bg-white/70 px-4 py-2 text-right shadow-soft backdrop-blur">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-driftwood">Dates</p>
-          <p className="text-sm font-medium text-ink">{tripData.dates}</p>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setTheme((current) => (current === 'light' ? 'dark' : 'light'))}
+            className="rounded-full border border-white/70 bg-white/70 p-3 text-driftwood shadow-soft backdrop-blur"
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {theme === 'light' ? <Moon className="h-4 w-4 text-deepLake" /> : <Sun className="h-4 w-4 text-[#ffd27a]" />}
+          </button>
+          <div className="rounded-full border border-white/70 bg-white/70 px-4 py-2 text-right shadow-soft backdrop-blur">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-driftwood">Dates</p>
+            <p className="text-sm font-medium text-ink">{tripData.dates}</p>
+          </div>
         </div>
       </div>
 
@@ -181,14 +211,21 @@ function App() {
         <section id="home" data-section className="section-shell">
           <SectionHeader
             eyebrow="Home"
-            title="A curated plan for Eric & Mona’s birthday beach getaway"
+            title="The trip at a glance"
             description="Image-forward, practical, and calm: Jack Pine is the heart of the trip, Grand Haven is the exhale at the end, and the whole flow stays scenic without feeling overpacked."
           />
 
           <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
             <article className="editorial-card">
               <div className="card-inner">
-                <div className="visual-panel bg-gradient-to-br from-[#d8c1ad] via-[#fbf3ea] to-[#b9ced9]">
+                <div
+                  className="visual-panel overflow-hidden bg-gradient-to-br from-[#b9e3f4] via-[#f7fdff] to-[#8acde8]"
+                  style={{
+                    backgroundImage: `linear-gradient(135deg, rgba(247, 253, 255, 0.78), rgba(138, 205, 232, 0.35)), url(${ludingtonHeroImage})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                  }}
+                >
                   <div className="relative z-10 flex h-full min-h-[14rem] flex-col justify-between">
                     <div className="flex flex-wrap gap-2">
                       <span className="tag-pill">Jack Pine first</span>
@@ -198,10 +235,6 @@ function App() {
                       <h2 className="font-display text-[2.4rem] leading-[0.92] tracking-[-0.06em] text-ink sm:text-[3rem]">
                         West Michigan birthday escape.
                       </h2>
-                      <p className="max-w-md text-sm leading-6 text-ink/74 sm:text-base">
-                        {tripData.subtitle} Lighthouse hike, lake paddle, dune pause, then two calmer nights in Grand
-                        Haven.
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -217,17 +250,12 @@ function App() {
                   </div>
                 </div>
 
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {[
-                    { label: 'Trip shape', value: '6 days' },
-                    { label: 'Main focus', value: 'Ludington first' },
-                    { label: 'Finish', value: '2 Grand Haven nights' },
-                  ].map((item) => (
-                    <div key={item.label} className="rounded-[1.3rem] border border-white/70 bg-white/58 px-4 py-3">
-                      <p className="eyebrow mb-1">{item.label}</p>
-                      <p className="text-sm font-semibold text-ink">{item.value}</p>
-                    </div>
-                  ))}
+                <div className="mt-4 rounded-[1.35rem] bg-sand/55 p-4">
+                  <p className="eyebrow mb-2">Trip shape</p>
+                  <p className="text-sm leading-6 text-ink/76">
+                    Six days total: three Ludington nights up front, one scenic southbound move day, then two easier
+                    Grand Haven nights to finish.
+                  </p>
                 </div>
               </div>
             </article>
@@ -248,7 +276,7 @@ function App() {
               </article>
 
               <article className="editorial-card">
-                <div className="visual-panel bg-gradient-to-br from-[#efd0cb] via-[#fff8f2] to-[#e6d6c3]">
+                <div className="visual-panel bg-gradient-to-br from-[#d0ebfa] via-[#fbfeff] to-[#b5e2f4]">
                   <div className="relative z-10">
                     <div className="mb-3 flex items-center gap-2">
                       <Sparkles className="h-4 w-4 text-deepLake" />
@@ -268,25 +296,13 @@ function App() {
 
           <div className="mt-5 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="masonry-board columns-1 sm:columns-2">
-              {tripData.homeFeatures.slice(0, 4).map((feature) => (
+              {tripData.homeFeatures.slice(0, 3).map((feature) => (
                 <div key={feature.id} className="masonry-item">
                   <article className="editorial-card">
                     <div className={`visual-panel bg-gradient-to-br ${feature.palette}`}>
                       <div className="relative z-10 flex min-h-[9rem] flex-col justify-between">
-                        <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-3">
                           <span className="tag-pill">{feature.tag}</span>
-                          <button
-                            type="button"
-                            onClick={() => toggleId(feature.id, setFavoriteIds)}
-                            className="rounded-full border border-white/70 bg-white/60 p-2 text-driftwood"
-                            aria-label={`Favorite ${feature.title}`}
-                          >
-                            <Heart
-                              className={`h-4 w-4 ${
-                                favoriteIds.includes(feature.id) ? 'fill-[#d99088] text-[#d99088]' : 'text-driftwood'
-                              }`}
-                            />
-                          </button>
                         </div>
                         <div>
                           <h3 className="font-display text-[1.7rem] leading-none tracking-[-0.04em] text-ink">
@@ -404,6 +420,21 @@ function App() {
             description="The exploration side is curated around what is most worth doing, what fits the flow, and what stays optional so the whole trip never starts feeling over-engineered."
           />
 
+          <div className="mb-4 flex flex-wrap gap-2">
+            <a
+              href="https://www.michigan.gov/recsearch/-/media/Project/Websites/recsearch/documents/MapsI-N/ludington_hiking.pdf?hash=2C8F30752F200157BE5ACF1E2AC847A8&rev=1baf45f1ebb6437c8eed25b67234febb"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-soft"
+            >
+              Open Ludington hike map
+              <ArrowUpRight className="h-4 w-4 text-deepLake" />
+            </a>
+            <span className="rounded-full bg-sand/60 px-4 py-2 text-sm text-ink/72">
+              Official DNR PDF for Big Sable, Sable River, Jack Pine, and inland trail options
+            </span>
+          </div>
+
           <div className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
             <div>
               <div className="mb-3 flex items-center gap-2 px-1">
@@ -416,26 +447,12 @@ function App() {
                     <article className="editorial-card">
                       <div className={`visual-panel bg-gradient-to-br ${hike.palette}`}>
                         <div className="relative z-10 flex min-h-[10rem] flex-col justify-between">
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex flex-wrap gap-2">
-                              {hike.tags.map((tag) => (
-                                <span key={tag} className="tag-pill">
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <button
-                              type="button"
-                              onClick={() => toggleId(hike.id, setFavoriteIds)}
-                              className="rounded-full border border-white/70 bg-white/60 p-2"
-                              aria-label={`Favorite ${hike.title}`}
-                            >
-                              <Heart
-                                className={`h-4 w-4 ${
-                                  favoriteIds.includes(hike.id) ? 'fill-[#d99088] text-[#d99088]' : 'text-driftwood'
-                                }`}
-                              />
-                            </button>
+                          <div className="flex flex-wrap gap-2">
+                            {hike.tags.map((tag) => (
+                              <span key={tag} className="tag-pill">
+                                {tag}
+                              </span>
+                            ))}
                           </div>
                           <h3 className="max-w-[15rem] font-display text-[1.7rem] leading-none tracking-[-0.04em] text-ink">
                             {hike.title}
@@ -515,6 +532,22 @@ function App() {
                         <p className="eyebrow mb-1">Practical note</p>
                         <p className="text-sm leading-6 text-ink/74">{activity.practical}</p>
                       </div>
+                      {activity.links?.length ? (
+                        <div className="flex flex-wrap gap-2">
+                          {activity.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-2 rounded-full border border-driftwood/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-soft"
+                            >
+                              {link.label}
+                              <ArrowUpRight className="h-4 w-4 text-deepLake" />
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                   </article>
                 ))}
@@ -537,10 +570,10 @@ function App() {
                   <div
                     className={`visual-panel bg-gradient-to-br ${
                       index % 3 === 0
-                        ? 'from-[#ead4c5] via-[#fff7ef] to-[#d9e6ed]'
+                        ? 'from-[#c6ebf8] via-[#fbfeff] to-[#9ed7ee]'
                         : index % 3 === 1
-                          ? 'from-[#dbe6d6] via-[#fbfdf8] to-[#f0e3d2]'
-                          : 'from-[#e8d0cc] via-[#fff9f3] to-[#e8decf]'
+                          ? 'from-[#d8f3f6] via-[#fbfeff] to-[#bae8e3]'
+                          : 'from-[#d3edfa] via-[#fcfeff] to-[#b5e2f4]'
                     }`}
                   >
                     <div className="relative z-10 flex min-h-[9rem] flex-col justify-end">
@@ -691,7 +724,7 @@ function App() {
 
           <article className="editorial-card">
             <div className="card-inner">
-              <div className="visual-panel mb-4 bg-gradient-to-br from-[#d8c5b3] via-[#fbf4ec] to-[#cad9e3]">
+              <div className="visual-panel mb-4 bg-gradient-to-br from-[#c0e6f5] via-[#f9fdff] to-[#99d3eb]">
                 <div className="relative z-10 flex min-h-[9rem] flex-col justify-between">
                   <div className="flex flex-wrap gap-2">
                     <span className="tag-pill">Ludington first</span>
@@ -708,29 +741,43 @@ function App() {
                 {tripData.routeStops.map((stop, index) => (
                   <div key={stop.id} className="flex gap-3">
                     <div className="flex flex-col items-center">
-                      <button
-                        type="button"
-                        onClick={() => toggleId(stop.id, setFavoriteIds)}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white/80 shadow-soft"
-                        aria-label={`Favorite ${stop.title}`}
-                      >
-                        {favoriteIds.includes(stop.id) ? (
-                          <Heart className="h-4 w-4 fill-[#d99088] text-[#d99088]" />
-                        ) : (
-                          <span className="text-xs font-semibold text-ink">{index + 1}</span>
-                        )}
-                      </button>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white/80 text-xs font-semibold text-ink shadow-soft">
+                        {index + 1}
+                      </span>
                       {index < tripData.routeStops.length - 1 ? (
                         <span className="mt-2 h-full min-h-12 w-px bg-driftwood/20" />
                       ) : null}
                     </div>
-                    <div className={`flex-1 rounded-[1.35rem] bg-gradient-to-br ${stop.palette} p-4`}>
+                    <div className={`light-gradient-panel flex-1 rounded-[1.35rem] bg-gradient-to-br ${stop.palette} p-4`}>
                       <div className="flex items-center justify-between gap-3">
                         <p className="text-sm font-semibold text-ink">{stop.title}</p>
                         <span className="tag-pill">{stop.tag}</span>
                       </div>
                       <p className="mt-2 text-sm font-medium text-ink/78">{stop.note}</p>
                       <p className="mt-2 text-sm leading-6 text-ink/72">{stop.detail}</p>
+                      {stop.links?.length ? (
+                        <div className="mt-3 flex flex-col gap-2">
+                          {stop.links.map((link) => (
+                            <a
+                              key={link.url}
+                              href={link.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/80 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-soft"
+                            >
+                              {link.label}
+                              <ArrowUpRight className="h-4 w-4 text-deepLake" />
+                            </a>
+                          ))}
+                          {stop.links.map((link) =>
+                            link.note ? (
+                              <p key={`${link.url}-note`} className="text-sm leading-6 text-ink/66">
+                                {link.note}
+                              </p>
+                            ) : null,
+                          )}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 ))}
