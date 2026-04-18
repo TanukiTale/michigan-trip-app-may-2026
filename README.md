@@ -18,17 +18,19 @@ npm run preview
 
 ## Deploy to GitHub Pages
 
-This project is configured for GitHub Pages with a workflow at:
+This project is configured for direct GitHub Pages publishing with:
 
-- [/Users/monalarge/Documents/Codex Projects/Michigan Trip App May 2026/.github/workflows/deploy-pages.yml](/Users/monalarge/Documents/Codex Projects/Michigan Trip App May 2026/.github/workflows/deploy-pages.yml)
+```bash
+npm run deploy
+```
 
-Once the repo is pushed to GitHub on `main`, GitHub Actions will build and deploy the app automatically.
+That command builds the app and publishes `dist` to the `gh-pages` branch.
 
 In the GitHub repository settings:
 
 1. Open `Settings` → `Pages`
-2. Set `Source` to `GitHub Actions`
-3. Wait for the `Deploy to GitHub Pages` workflow to finish
+2. Set `Source` to `Deploy from a branch`
+3. Choose branch `gh-pages` and folder `/ (root)`
 
 ## Where to edit trip content
 
