@@ -1,0 +1,38 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" rx="240" fill="url(#bg)" />
+  <rect x="54" y="54" width="916" height="916" rx="208" stroke="rgba(255,255,255,0.32)" stroke-width="16"/>
+  <circle cx="748" cy="282" r="88" fill="url(#sun)" opacity="0.96"/>
+  <path d="M124 720C196 674 270 650 344 650C432 650 480 706 566 706C666 706 704 620 820 620C863 620 896 626 924 638V850H124V720Z" fill="url(#sea)"/>
+  <path d="M124 770C198 728 264 708 336 708C418 708 470 756 554 756C654 756 712 692 818 692C858 692 894 698 924 710V850H124V770Z" fill="url(#foam)" fill-opacity="0.95"/>
+  <path d="M558 692L610 374H694L746 692H558Z" fill="#FFF9EF"/>
+  <rect x="610" y="314" width="84" height="72" rx="10" fill="#F4E3D2"/>
+  <rect x="633" y="248" width="38" height="78" rx="10" fill="#FFF9EF"/>
+  <rect x="648" y="208" width="8" height="44" rx="4" fill="#F6C8B7"/>
+  <path d="M628 496H660" stroke="#77C4E3" stroke-width="14" stroke-linecap="round"/>
+  <path d="M590 852C618 788 668 744 744 706" stroke="rgba(255,255,255,0.72)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M274 428C318 352 398 304 500 304C602 304 676 350 716 428" stroke="rgba(255,255,255,0.78)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M262 458C308 382 392 340 496 340C598 340 680 382 726 458" stroke="rgba(255,255,255,0.4)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M208 846C238 756 308 696 414 666" stroke="rgba(255,255,255,0.24)" stroke-width="18" stroke-linecap="round"/>
+  <text x="210" y="602" fill="#FFFFFF" font-family="Iowan Old Style, Georgia, serif" font-size="154" font-weight="700" letter-spacing="-0.06em">E</text>
+  <text x="320" y="640" fill="#FFF1E5" font-family="Iowan Old Style, Georgia, serif" font-size="88" font-weight="700" letter-spacing="-0.04em">&amp;</text>
+  <text x="402" y="602" fill="#FFFFFF" font-family="Iowan Old Style, Georgia, serif" font-size="154" font-weight="700" letter-spacing="-0.06em">M</text>
+  <defs>
+    <linearGradient id="bg" x1="148" y1="108" x2="864" y2="938" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9E1F7"/>
+      <stop offset="0.44" stop-color="#69C1E9"/>
+      <stop offset="1" stop-color="#2C85B9"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(748 282) rotate(90) scale(88)">
+      <stop stop-color="#FFF8D7"/>
+      <stop offset="1" stop-color="#FFD28C"/>
+    </radialGradient>
+    <linearGradient id="sea" x1="524" y1="620" x2="524" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58B5DE"/>
+      <stop offset="1" stop-color="#1F74A7"/>
+    </linearGradient>
+    <linearGradient id="foam" x1="524" y1="692" x2="524" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BFEFFF"/>
+      <stop offset="1" stop-color="#69C4E9"/>
+    </linearGradient>
+  </defs>
+</svg>
